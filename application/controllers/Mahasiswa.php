@@ -24,12 +24,15 @@ class Mahasiswa extends CI_Controller {
     public function tambah()
     {
         $data['judul'] = 'Form Tambah Data Mahasiswa';
+        $data['jurusan'] = ['Teknik Informatika', 'Teknik Mesin', 'Teknik Lingkungan', 'Teknik Planologi', 'Teknik Pangan'];
+
         $this->form_validation->set_rules('nama', 'Nama', 'required');
         $this->form_validation->set_rules('nrp', 'NRP', 'required|numeric');
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+
         if( $this->form_validation->run() == FALSE ) {
             $this->load->view('templates/header', $data);
-            $this->load->view('mahasiswa/tambah');
+            $this->load->view('mahasiswa/tambah', $data);
             $this->load->view('templates/footer');
         } else {
             $this->Mahasiswa_model->tambahDataMahasiswa();
