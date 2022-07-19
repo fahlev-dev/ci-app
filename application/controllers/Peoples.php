@@ -6,6 +6,7 @@ class Peoples extends CI_Controller {
     {
         $data['judul'] = 'List Of Peoples';
 
+        // meload model peoples
         $this->load->model('Peoples_model', 'peoples');
 
         // Pagination
